@@ -27,13 +27,7 @@ namespace Prestamos_Personas.BLL.Tests
             Assert.AreEqual(paso, true);
         }
 
-        [TestMethod()]
-        public void InsertarTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
+       
         public void ModificarTest()
         {
             Personas persona = new Personas();
@@ -77,10 +71,6 @@ namespace Prestamos_Personas.BLL.Tests
             Assert.AreEqual(paso, true);
         }
 
-        [TestMethod()]
-        public void GetListTest()
-        {
-            Assert.Fail();
-        }
+       
     }
 }

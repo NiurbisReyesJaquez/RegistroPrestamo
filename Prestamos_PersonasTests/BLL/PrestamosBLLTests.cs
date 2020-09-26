@@ -15,22 +15,19 @@ namespace Prestamos_Personas.BLL.Tests
         {
             bool paso = false;
             Prestamos Prestamo = new Prestamos();
+
             Prestamo.PrestamosId = 0;
             Prestamo.Fecha = DateTime.Now;
             Prestamo.PersonaId = 1;
-            Prestamo.Concepto = "Compra de una casa";
-            Prestamo.Monto = 50000;
+            Prestamo.Concepto = "Compra de Carro";
+            Prestamo.Monto = 60000;
             Prestamo.Balance = 0;
 
             paso = PrestamosBLL.Guardar(Prestamo);
             Assert.AreEqual(paso, true);
         }
 
-        [TestMethod()]
-        public void InsertarTest()
-        {
-            Assert.Fail();
-        }
+       
 
         [TestMethod()]
         public void ModificarTest()
@@ -41,8 +38,8 @@ namespace Prestamos_Personas.BLL.Tests
             Prestamo.PrestamosId = 1;
             Prestamo.Fecha = DateTime.Now;
             Prestamo.PersonaId = 1;
-            Prestamo.Concepto = "Compra de una casa";
-            Prestamo.Monto = 50000;
+            Prestamo.Concepto = "Compra de Carro";
+            Prestamo.Monto = 90000;
             Prestamo.Balance = 0;
 
             paso = PrestamosBLL.Modificar(Prestamo);
@@ -77,6 +74,8 @@ namespace Prestamos_Personas.BLL.Tests
             paso = PrestamosBLL.Existe(1);
             Assert.AreEqual(paso, true);
         }
+
+        
 
         [TestMethod()]
         public void GuardarBalanceTest()
@@ -132,5 +131,7 @@ namespace Prestamos_Personas.BLL.Tests
 
             Assert.AreEqual(paso, true);
         }
+
+
     }
 }
