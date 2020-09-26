@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestamos_Personas", "Prestamos_Personas\Prestamos_Personas.csproj", "{C09222BE-F2B8-40AC-B0F4-314501686C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestamos_PersonasTests", "Prestamos_PersonasTests\Prestamos_PersonasTests.csproj", "{C08CCC06-C776-4435-9650-A676E11B52AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C09222BE-F2B8-40AC-B0F4-314501686C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C09222BE-F2B8-40AC-B0F4-314501686C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C09222BE-F2B8-40AC-B0F4-314501686C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C09222BE-F2B8-40AC-B0F4-314501686C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08CCC06-C776-4435-9650-A676E11B52AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08CCC06-C776-4435-9650-A676E11B52AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08CCC06-C776-4435-9650-A676E11B52AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08CCC06-C776-4435-9650-A676E11B52AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFEF2D0E-512A-4836-AA61-D9166976A6DF}
+	EndGlobalSection
+EndGlobal

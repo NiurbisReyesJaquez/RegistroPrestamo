@@ -1,0 +1,162 @@
+﻿@page "/prestamos"
+
+@using Models
+@using Prestamos_Personas.BLL
+
+@inject IToastService toast
+
+<EditForm Model="Prestamo" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
+    <div class="card">
+        <div class="card-header">
+            <h3>Registro de préstamos</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                @*Id*@
+                <div class="form-group">
+                    <label>PrestamosId</label>
+                    <div class="input-group">
+                        <InputNumber class="form-control col-4" @bind-Value="Prestamo.PrestamosId"></InputNumber>
+                        <ValidationMessage For="@(() => Prestamo.PrestamosId)"></ValidationMessage>
+                        <button type="button" class="btn btn-primary input-group-append" @onclick="Buscar">Buscar</button>
+                    </div>
+                </div>
+                @*Fecha*@
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <InputDate class="form-control" @bind-Value="Prestamo.Fecha"></InputDate>
+                    <ValidationMessage For="@(() => Prestamo.Fecha)"></ValidationMessage>
+                </div>
+
+                @*PersonaId*@
+                <div class="form-group">
+                    <label>Persona</label>
+                    <select @bind="Prestamo.PersonaId" class="form-control">
+                        @foreach (var item in LlenarComboBox())
+                        {
+                            <option value="@item.PersonaId">@item.Nombre</option>
+                        }
+                    </select>
+                    <ValidationMessage For="@(()=>Prestamo.PersonaId)" />
+
+                </div>
+
+                @*Concepto*@
+                <div class="form-group">
+                    <label>Concepto</label>
+                    <InputText @bind-Value="Prestamo.Concepto" class="form-control"></InputText>
+                    <ValidationMessage For="@(()=>Prestamo.Concepto)" />
+                </div>
+
+                @*Monto*@
+                <div class="form-group">
+                    <label>Monto</label>
+                    <InputNumber @bind-Value="Prestamo.Monto" class="form-control"></InputNumber>
+                    <ValidationMessage For="@(()=>Prestamo.Monto)" />
+                </div>
+
+                @*Balance*@
+                <div class="form-group">
+                    <label>Balance</label>
+                    <InputNumber @bind-Value="Prestamo.Balance" class="form-control" ReadOnly="true"></InputNumber>
+                    <ValidationMessage For="@(()=>Prestamo.Balance)" />
+                </div>
+            </form>
+
+        </div>
+        <div class="card-footer">
+            <div class="form-group text-center" display: inline-block>
+                <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo"> <span class="oi oi-file"></span> Nuevo </button>
+                <button type="submit" class="btn btn-lg btn-success"> <span class="oi oi-cloud"></span> Guardar </button>
+                <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar"> <span class="oi oi-trash"></span> Eliminar </button>
+            </div>
+
+        </div>
+    </div>
+    </EditForm>
+       
+
+
+
+ @code {
+
+
+     private Prestamos Prestamo = new Prestamos();
+     private Personas Persona = new Personas();
+
+     protected override void OnInitialized()
+     {
+         Nuevo();
+         Buscar();
+         LlenarComboBox();
+     }
+
+     private List<Personas> LlenarComboBox()
+     {
+         List<Personas> lista = new List<Personas>();
+         lista = PersonasBLL.GetList(p => true);
+
+         return lista;
+     }
+
+     public void Nuevo()
+     {
+         Prestamo = new Prestamos();
+     }
+
+     private void Buscar()
+     {
+         if (Prestamo.PrestamosId > 0)
+         {
+             var encontrado = PrestamosBLL.Buscar(Prestamo.PrestamosId);
+
+             if (encontrado != null)
+                 this.Prestamo = encontrado;
+             else
+             {
+                 Nuevo();
+                 toast.ShowWarning("¡No encontrado!");
+             }
+
+         }
+     }
+
+     public void Guardar()
+     {
+         bool guardado = PrestamosBLL.Guardar(Prestamo);
+
+         if (guardado)
+         {
+             Nuevo();
+             toast.ShowSuccess("Guardado exitosamente");
+         }
+         else
+         {
+             toast.ShowError("No se pudo guardar");
+         }
+     }
+
+     public void Eliminar()
+     {
+         bool eliminado = PersonasBLL.Eliminar(Persona.PersonaId);
+
+         if (eliminado)
+         {
+             Nuevo();
+             toast.ShowSuccess("Eliminado exitosamente");
+         }
+         else
+         {
+             toast.ShowError("No se pudo eliminar");
+         }
+     }
+
+
+
+
+
+
+
+
+}
